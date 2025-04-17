@@ -9,7 +9,7 @@ on:
 env:
   DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKERHUB_KEY: ${{ secrets.DOCKER_KEY }}
-  IMAGE_NAME: node-app
+  IMAGE_NAME: nodeapp
 
 jobs:
   build-and-deploy:
@@ -35,8 +35,8 @@ jobs:
         run: |
           cd nodeapp
           sed -i 's|APP_VERSION:.*|APP_VERSION: '${{ github.sha }}'|' values.yaml 
-          git config --global user.name 'devopshint'
-          git config --global user.email 'devopshint@gmail.com'
+          git config --global user.name 'devopsgrohit'
+          git config --global user.email 'rohitcoolinbox@gmail.com'
           git add values.yaml
           git commit -m "Update values.yaml"
           git push
