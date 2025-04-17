@@ -11,7 +11,7 @@ env:
   DOCKERHUB_KEY: ${{ secrets.DOCKER_KEY }}
   IMAGE_NAME: nodeapp
   IMAGE_TAG: latest
-  REPOSITORY: devopshint
+  REPOSITORY: nodeapp
 
 jobs:
   build-and-deploy:
