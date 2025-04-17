@@ -36,9 +36,8 @@ jobs:
 
       - name: Update values.yaml
         run: |
-          cd nodeapp
-          
-          sed -i "s|^\(\s*tag:\s*\).*|\1\"$IMAGE_TAG\"|" values.yaml
+          cd nodeapp          
+          sed -i 's|^\(\s*tag:\s*\).*|\1"'"${{ IMAGE_TAG }}"'"|' values.yaml
           git config --global user.name 'devopsgrohit'
           git config --global user.email 'rohitcoolinbox@gmail.com'
           git add values.yaml
