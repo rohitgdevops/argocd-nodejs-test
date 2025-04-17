@@ -10,7 +10,7 @@ env:
   DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
   DOCKERHUB_KEY: ${{ secrets.DOCKER_KEY }}
   IMAGE_NAME: nodeapp
-  IMAGE_TAG: "latest-${GITHUB_RUN_NUMBER}"
+  IMAGE_TAG: latest-${{ github.run_number }}
   REPOSITORY: nodeapp
 
 jobs:
@@ -37,8 +37,7 @@ jobs:
       - name: Update values.yaml
         run: |
           cd nodeapp          
-          sed -i 's|^\(\s*tag:\s*\).*|\1"'"${{ IMAGE_TAG }}"'"|' values.yaml
-          
+          sed -i "s|^\(\s*tag:\s*\).*|\1\"$IMAGE_TAG\"|" values.yaml       
           git config --global user.name 'devopsgrohit'
           git config --global user.email 'rohitcoolinbox@gmail.com'
           git add values.yaml
